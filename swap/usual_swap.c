@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   usual_swap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmoroz <vmoroz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 13:07:25 by vmoroz            #+#    #+#             */
-/*   Updated: 2024/07/19 14:08:51 by vmoroz           ###   ########.fr       */
+/*   Created: 2024/07/08 11:33:10 by vmoroz            #+#    #+#             */
+/*   Updated: 2024/07/19 14:08:47 by vmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "../push_swap.h"
 
-int	main(int argc, char **argv)
+void	swap(t_stack *st, int trigger, char st_name)
 {
-	t_stack	a;
-	t_stack	b;
+	int	temp;
 
-	if (argc < 2)
-		exit(EXIT_SUCCESS);
-	else if (!make_stacks(&a, &b, argc, argv))
-		ft_putstr_fd("Error\n", 2);
-	else if (find_duplicates(a))
-		ft_putstr_fd("Error\n", 2);
-	else
-		sort(&a, &b);
-	free(a.stack);
-	free(b.stack);
+	if (st->len > 1)
+	{
+		temp = st->stack[st->len - 1];
+		st->stack[st->len - 1] = st->stack[st->len - 2];
+		st->stack[st->len - 2] = temp;
+	}
+	st->first = st->stack[st->len - 1];
+	if (trigger)
+		ft_printf("s%c\n", st_name);
 }

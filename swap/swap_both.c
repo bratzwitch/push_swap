@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   swap_both.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmoroz <vmoroz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 13:07:25 by vmoroz            #+#    #+#             */
-/*   Updated: 2024/07/19 14:08:51 by vmoroz           ###   ########.fr       */
+/*   Created: 2024/07/08 12:12:39 by vmoroz            #+#    #+#             */
+/*   Updated: 2024/07/19 14:08:41 by vmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "../push_swap.h"
 
-int	main(int argc, char **argv)
+void	sswap(t_stack *s1, t_stack *s2, int trigger)
 {
-	t_stack	a;
-	t_stack	b;
-
-	if (argc < 2)
-		exit(EXIT_SUCCESS);
-	else if (!make_stacks(&a, &b, argc, argv))
-		ft_putstr_fd("Error\n", 2);
-	else if (find_duplicates(a))
-		ft_putstr_fd("Error\n", 2);
-	else
-		sort(&a, &b);
-	free(a.stack);
-	free(b.stack);
+	swap(s1, 0, 'a');
+	swap(s2, 0, 'b');
+	if (trigger)
+		ft_printf("ss\n");
 }

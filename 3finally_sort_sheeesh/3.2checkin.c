@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   3.2checkin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmoroz <vmoroz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 13:07:25 by vmoroz            #+#    #+#             */
-/*   Updated: 2024/07/19 14:08:51 by vmoroz           ###   ########.fr       */
+/*   Created: 2024/07/08 11:27:13 by vmoroz            #+#    #+#             */
+/*   Updated: 2024/07/19 14:09:41 by vmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "../push_swap.h"
 
-int	main(int argc, char **argv)
+int	is_sorted(t_stack st)
 {
-	t_stack	a;
-	t_stack	b;
+	int	i;
 
-	if (argc < 2)
-		exit(EXIT_SUCCESS);
-	else if (!make_stacks(&a, &b, argc, argv))
-		ft_putstr_fd("Error\n", 2);
-	else if (find_duplicates(a))
-		ft_putstr_fd("Error\n", 2);
-	else
-		sort(&a, &b);
-	free(a.stack);
-	free(b.stack);
+	i = 0;
+	while (i < st.len - 1)
+	{
+		if (st.stack[i] < st.stack[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
 }

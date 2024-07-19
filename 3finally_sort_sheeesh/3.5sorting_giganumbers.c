@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   3.5sorting_giganumbers.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmoroz <vmoroz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/05 13:07:25 by vmoroz            #+#    #+#             */
-/*   Updated: 2024/07/19 14:08:51 by vmoroz           ###   ########.fr       */
+/*   Created: 2024/07/08 12:11:14 by vmoroz            #+#    #+#             */
+/*   Updated: 2024/07/19 13:51:09 by vmoroz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "../push_swap.h"
 
-int	main(int argc, char **argv)
+void	sort_more_v2(t_stack *a, t_stack *b)
 {
-	t_stack	a;
-	t_stack	b;
+	int	i;
+	int	last;
 
-	if (argc < 2)
-		exit(EXIT_SUCCESS);
-	else if (!make_stacks(&a, &b, argc, argv))
-		ft_putstr_fd("Error\n", 2);
-	else if (find_duplicates(a))
-		ft_putstr_fd("Error\n", 2);
-	else
-		sort(&a, &b);
-	free(a.stack);
-	free(b.stack);
+	i = a->first;
+	last = i;
+	rotate(a, 1, 'a');
+	while (a->first != i)
+	{
+		if (a->first > last)
+		{
+			last = a->first;
+			rotate(a, 1, 'a');
+		}
+		else
+			push(b, a, 1, 'b');
+	}
+	sort_back_to_a(a, b);
 }

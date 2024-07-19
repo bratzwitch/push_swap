@@ -27,7 +27,7 @@ LIB_OBJS = $(LIB_FILES:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIB_OBJS)
-		@ar rc $(NAME) $(LIB_OBJS) && make clean
+		ar rc $(NAME) $(LIB_OBJS) && make clean
 
 clean:
 		$(RM) $(LIB_OBJS)
@@ -38,3 +38,5 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+
+.SILENT:
